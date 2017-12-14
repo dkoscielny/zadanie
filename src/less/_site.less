@@ -1,0 +1,78 @@
+body{
+    font-family: "Fira Sans", sans-serif;
+}
+
+h1{
+    font-size: 40px;
+    .upper-text;
+    font-weight: 700;
+}
+h2{
+    font-size: 25px;
+    padding: 8px;
+    margin-bottom: 0;
+}
+h1, h2{
+    .center-text;
+}
+
+input:focus:invalid{
+    border-color: rgb(221, 80, 80);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(221, 80, 80, 0.6);
+  }
+
+.order{
+    .order__title{
+        background-color: @color-base-dark;
+    }
+
+    #order__form{
+        background-color: @color-base-saturate;
+        padding: 20px;
+        
+    }
+    .order__btn-submit{
+        background-color: @color-base-dark;
+
+        &:hover{
+            background-color: @color-base-light;
+        }
+    }
+
+}
+
+.summary{
+    .summary__title{
+        background-color: @triadic-secondary-dark;
+    }
+
+    .summary__table{
+        thead{
+            background-color: @triadic-secondary;
+        }
+
+        tbody{
+            background-color: @triadic-secondary-light;
+        }
+
+        .deleteItem{
+            cursor: pointer;
+            color: rgb(231, 53, 53);
+        }
+    }
+
+    .summary__counting{
+        .none;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .summary{
+        .summary__table-wrapper{
+            overflow-x: scroll;
+        }
+        .summary__table{
+            font-size: 12px;
+        }
+    }
+}
