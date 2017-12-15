@@ -92,6 +92,9 @@ input:focus:invalid {
 .summary .summary__title {
   background-color: #d3e9b8;
 }
+.summary .summary__table-wrapper {
+  overflow-x: scroll;
+}
 .summary .summary__table thead {
   background-color: #ebf5df;
 }
@@ -106,9 +109,6 @@ input:focus:invalid {
   display: none;
 }
 @media only screen and (max-width: 767px) {
-  .summary .summary__table-wrapper {
-    overflow-x: scroll;
-  }
   .summary .summary__table {
     font-size: 12px;
   }

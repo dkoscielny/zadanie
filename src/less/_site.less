@@ -45,7 +45,9 @@ input:focus:invalid{
     .summary__title{
         background-color: @triadic-secondary-dark;
     }
-
+    .summary__table-wrapper{
+        overflow-x: scroll;
+    }
     .summary__table{
         thead{
             background-color: @triadic-secondary;
@@ -68,9 +70,6 @@ input:focus:invalid{
 
 @media only screen and (max-width: 767px) {
     .summary{
-        .summary__table-wrapper{
-            overflow-x: scroll;
-        }
         .summary__table{
             font-size: 12px;
         }
