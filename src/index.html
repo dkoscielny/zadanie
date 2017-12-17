@@ -19,58 +19,114 @@
 		<!-- endbuild -->
 
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        
     </head>
     
     <body>
-        <div class="container">
-            <h1>Zamówienia</h1>
+        <div class="orders">
+            <header>
+                <div class="container">
+                    <h1 class="orders-title">Zamówienia</h1>
+                </div>
+            </header>
 
-            <div class="order">
-                    
-                <h2 class="order__title"><i class="fa fa-file-text-o" aria-hidden="true"></i> Nowe zamówienie</h2>
-                <form id="order__form">
+            <div class="orders__newOrder">
+                <div class="container">    
+                    <h2 class="newOrder__title"><i class="fa fa-file-text-o" aria-hidden="true"></i> Nowe zamówienie</h2>
+                    <div class="newOrder__form-wrapper">
+                        <form id="newOrder__form">
 
-                    <div class="form-group">
-                        <label for="productName">Rodzaj produktu</label>
-                        <input type="text" maxlength="60" class="form-control" id="productName" placeholder="Rodzaj produktu" required>
+                            <div class="form-group">
+                                <label for="productName">Rodzaj produktu</label>
+                                <input type="text" maxlength="60" class="form-control" id="newOrder__productName" placeholder="Rodzaj produktu" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="quantity">Liczba sztuk</label>
+                                <input type="number" min="1" max="100000" class="form-control" id="newOrder__quantity" placeholder="Liczba sztuk" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="costPerItem">Cena jednostkowa [PLN]</label>
+                                <input type="number" min="0.01" max="1000000" step="0.01" class="form-control" id="newOrder__costPerItem" placeholder="Cena jednostkowa" required>
+                            </div>
+                            <input type="submit" class="btn btn-main newOrder__submit" value="Przelicz">
+                        </form>
                     </div>
 
-                    <div class="form-group">
-                        <label for="quantity">Liczba sztuk</label>
-                        <input type="number" min="1" max="100000" class="form-control" id="quantity" placeholder="Liczba sztuk" required>
+                    <div id="newOrder__summary-modal" class="modal fade" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+        
+                                <div class="modal-header summary__modal-header">
+                                    <h2 class="summary__title"><i class="fa fa-gavel" aria-hidden="true"></i> Podsumowanie</h2>
+                                </div>
+        
+                                <div class="modal-body summary__modal-body">
+                                    <div class="summary__counting">trwa przeliczanie kursów walut...</div>
+        
+                                    <div class="summary__data">
+                                        <div><span>Rodzaj produktu: </span><span></span></div>
+                                        <div><span>Liczba sztuk: </span><span></span></div>
+                                        <div><span>Cena jednostkowa: </span><span></span></div>
+                                        <div><span>Cena Brutto [PLN]: </span><span></span></div>
+                                        <div><span>Cena Netto [PLN]: </span><span></span></div>
+                                        <div><span>Cena Netto [&#8364;&nbsp;EUR]: </span><span></span></div>
+                                        <div><span>Cena Netto [&#36;&nbsp;USD]: </span><span></span></div>
+                                    </div>
+                                </div>
+                            
+                                <div class="modal-footer summary__modal-footer">
+                                    <button type="button" class="btn btn-main summary__btn-toBasket">Dodaj do koszyka</button>
+                                    <button type="button" class="btn btn-main" data-dismiss="modal">Anuluj</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="costPerItem">Cena jednostkowa [PLN]</label>
-                        <input type="number" min="0.01" max="1000000" step="0.01" class="form-control" id="costPerItem" placeholder="Cena jednostkowa" required>
-                    </div>
-                    <input type="submit" class="btn order__btn-submit" value="Przelicz">
-                </form>
             </div>
-            <div class="summary">
-                <h2 class="summary__title"><i class="fa fa-gavel" aria-hidden="true"></i> Podsumowanie</h2>
-                <div class="summary__table-wrapper">
-                    <table class="summary__table table table-condensed">
-                        <thead>
-                            <tr>
-                                <th>Rodzaj produktu</th>
-                                <th>Liczba sztuk</th>
-                                <th>Cena jednostkowa [PLN]</th>
-                                <th>Suma Brutto [PLN]</th>
-                                <th>Suma Netto [PLN]</th>
-                                <th>Suma Netto [&#8364;&nbsp;EUR]</th>
-                                <th>Suma Netto [&#36;&nbsp;USD]</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                    <div class="summary__counting">trwa przeliczanie kursów walut...</div>
+
+            <div class="orders__basket">
+                <div class="container">  
+                    <h2 class="basket__title"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Koszyk</h2>
+
+                    <div class="basket__table-wrapper">
+                        <table class="basket__table table table-condensed">
+
+                            <thead>
+                                <tr>
+                                    <th>Rodzaj produktu</th>
+                                    <th>Liczba sztuk</th>
+                                    <th>Cena jednostkowa [PLN]</th>
+                                    <th>Suma Brutto [PLN]</th>
+                                    <th>Suma Netto [PLN]</th>
+                                    <th>Suma Netto [&#8364;&nbsp;EUR]</th>
+                                    <th>Suma Netto [&#36;&nbsp;USD]</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3">Suma całkowita</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>           
+                            </tfoot>
+
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
         <script src="js/script.js"></script>
     </body>
