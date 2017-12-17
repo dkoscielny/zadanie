@@ -1,10 +1,11 @@
 // COLORS
 
-@color-base : rgb(223, 235, 245);
+@color-base : rgb(209, 228, 243);
 
 @color-base-light : lighten(@color-base, 10%);
 @color-base-dark : darken(@color-base, 10%); 
-@color-base-saturate : saturate(@color-base, 20%);
+@color-base-verydark : darken(@color-base, 40%); 
+@color-base-saturate : saturate(@color-base, 30%);
 @color-base-desaturate : desaturate(@color-base, 20%);
 @color-base-lightness : lightness(desaturate(@color-base, 100%), 30%);
 
@@ -15,5 +16,4 @@
 @triadic-secondary-desaturate : desaturate(@triadic-secondary, 20%);
 @triadic-secondary-lightness : lightness(desaturate(@triadic-secondary, 100%), 30%);
 
-@triadic-tertiary : spin(@color-base, (360 / 3));
-@triadic-tertiary-dark : darken(@triadic-tertiary, 10%);
+@color-btn-border: #adadad;
